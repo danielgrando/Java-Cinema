@@ -40,10 +40,10 @@ public class menu_sessao {
                 se.setNomesessao(nome);
                 String nomefilme = JOptionPane.showInputDialog(null, "Digite o nome do Filme", "Cadastro", 3);
                 se.setFilme(nomefilme);
-                String datainicio = JOptionPane.showInputDialog(null, "Digite a data início da sessão", "Cadastro", 3);
+                String datainicio = JOptionPane.showInputDialog(null, "Digite a data início da sessão (dia/mes/ano)", "Cadastro", 3);
                 SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
                 se.setDatainiciosessao(formato.parse(datainicio));
-                String horario = JOptionPane.showInputDialog(null, "Digite o horário", "Cadastro", 3);
+                String horario = JOptionPane.showInputDialog(null, "Digite o horário (hora:minutos)", "Cadastro", 3);
                 SimpleDateFormat forma = new SimpleDateFormat("HH:mm");
                 Date teste = forma.parse(horario);
                 Time time = new Time(teste.getTime());
@@ -63,10 +63,10 @@ public class menu_sessao {
                             a.setNomesessao(nomesessao);
                             String nomefilme = JOptionPane.showInputDialog(null, "Digite o nome do Filme", "Alterar", 3);
                             a.setFilme(nomefilme);
-                            String datainicio = JOptionPane.showInputDialog(null, "Digite a data início da sessão", "Alterar", 3);
+                            String datainicio = JOptionPane.showInputDialog(null, "Digite a data início da sessão (dia/mes/ano)", "Alterar", 3);
                             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
                             a.setDatainiciosessao(formato.parse(datainicio));
-                            String horario = JOptionPane.showInputDialog(null, "Digite o horário", "Alterar", 3);
+                            String horario = JOptionPane.showInputDialog(null, "Digite o horário (hora:minutos)", "Alterar", 3);
                             SimpleDateFormat forma = new SimpleDateFormat("HH:mm");
                             Date teste = forma.parse(horario);
                             Time time = new Time(teste.getTime());
@@ -121,7 +121,7 @@ public class menu_sessao {
                 JOptionPane.showMessageDialog(null, sessoes, "Sessões cadastradas", 3);
 
             } else if (opcao.equals("6")) {
-                String hor = JOptionPane.showInputDialog(null, "Digite o horário", "Listar por horário", 3);
+                String hor = JOptionPane.showInputDialog(null, "Digite o horário (hora:minutos)", "Listar por horário", 3);
                 SimpleDateFormat forma = new SimpleDateFormat("HH:mm");
                 Date teste1 = forma.parse(hor);
                 Time time = new Time(teste1.getTime());
@@ -136,7 +136,7 @@ public class menu_sessao {
                 JOptionPane.showMessageDialog(null, sessoes, "Sessões cadastradas", 3);
                 
             } else if (opcao.equals("7")){
-                String dia = JOptionPane.showInputDialog(null, "Digite a data", "Listar por dia/mês", 3);
+                String dia = JOptionPane.showInputDialog(null, "Digite a data (dia/mes/ano)", "Listar por dia/mês", 3);
                 SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
                 Date date = formato.parse(dia);
                 String sessoes = "\n ";
