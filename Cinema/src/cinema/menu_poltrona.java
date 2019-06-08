@@ -34,20 +34,17 @@ public class menu_poltrona {
 
             if (opcao.equals("1")) {
                 poltrona pol = new poltrona();
-                System.out.println("Digite o numero da poltrona: ");
-                int n = scan.nextInt();
-                pol.setNumeropoltrona(n);
-                System.out.println("Digite o nome da pessoa: ");
-                String nome = scan.next();
+                String n = JOptionPane.showInputDialog(null, "Digite o numero da poltrona: ", "Cadastro", 3);
+                int numero_convertido = Integer.parseInt(n);
+                pol.setNumeropoltrona(numero_convertido);
+                String nome = JOptionPane.showInputDialog(null, "Digite o nome da pessoa: ", "Cadastro", 3);
                 pol.setNome(nome);
-                System.out.println("Digite o tipo da poltrona: ");
-                String tipo = scan.next();
+                String tipo = JOptionPane.showInputDialog(null, "Digite o tipo da poltrona (Meia ou Inteira): ", "Cadastro", 3);
                 pol.setTipo(tipo);
-                System.out.println("Digite se tem necessidades especiais: ");
+                String necessidades = JOptionPane.showInputDialog(null, "Digite se tem necessidades especiais (True ou False): ", "Cadastro", 3);
                 boolean necessidade = scan.nextBoolean();
                 pol.setNecessidade_especiais(necessidade);
-                System.out.println("Digite a sessão da poltrona: ");
-                String sessao = scan.next();
+                String sessao = JOptionPane.showInputDialog(null, "Digite a sessao da poltrona: ", "Cadastro", 3);
                 pol.setSessao(sessao);
                 listapoltrona.add(pol);
 
@@ -57,17 +54,15 @@ public class menu_poltrona {
                     for (int i = 0; i < listapoltrona.size(); i++) {
                         if (listapoltrona.get(i).getNome().equals(nome)) {
                             poltrona a = listapoltrona.get(i);
-                            System.out.println("Digite o nome da pessoa: ");
-                            String nome1 = scan.next();
+                            String nome1 = JOptionPane.showInputDialog(null, "Digite o nome da pessoa: ", "Cadastro", 3);
                             a.setNome(nome1);
-                            System.out.println("Digite o tipo da poltrona: ");
-                            String tipo = scan.next();
+                            String tipo = JOptionPane.showInputDialog(null, "Digite o tipo da poltrona (Meia ou Inteira): ", "Cadastro", 3);
                             a.setTipo(tipo);
-                            System.out.println("Digite se tem necessidades especiais: ");
+                            String necessidades = JOptionPane.showInputDialog(null, "Digite se tem necessidades especiais (True ou False): ", "Cadastro", 3);
                             boolean necessidade = scan.nextBoolean();
                             a.setNecessidade_especiais(necessidade);
-                            System.out.println("Digite a sessão da poltrona: ");
-                            String sessao = scan.next();
+                            String sessao = JOptionPane.showInputDialog(null, "Digite a sessao da poltrona: ", "Cadastro", 3);
+                            a.setSessao(sessao);
                             for (int j = 0; j < listasessao.size(); j++) {
                                 if (sessao.equals(listasessao.get(j).getNomesessao())) {
                                     a.setSessao(sessao);
@@ -91,35 +86,49 @@ public class menu_poltrona {
                     }
                 }
 
-            }else if(opcao.equals("4")){
+            } else if (opcao.equals("4")) {
                 String numero = JOptionPane.showInputDialog(null, "Digite o numero da Poltrona", "Consultar Cadastro de Poltrona", 3);
                 String poltronas = "\n";
-                    int numeroConvertido = Integer.parseInt(numero);
-                    if(numero != null){
-                        for (int i = 0; i < listapoltrona.size(); i++) {
-                            if(listapoltrona.get(i).getNumeropoltrona()== numeroConvertido){
-                                poltronas = "Numero Poltrona: "+ listapoltrona.get(i).getNumeropoltrona()+"\n Nome: " +
-                                        listapoltrona.get(i).getNome()+ "\n Tipo: "+ listapoltrona.get(i).getTipo() +
-                                        "\n Necessidades Especiais: "+ listapoltrona.get(i).getNecessidade_especiais()+
-                                        "\n Sessão: " + listapoltrona.get(i).getSessao();                     
-                            }
+                int numeroConvertido = Integer.parseInt(numero);
+                if (numero != null) {
+                    for (int i = 0; i < listapoltrona.size(); i++) {
+                        if (listapoltrona.get(i).getNumeropoltrona() == numeroConvertido) {
+                            poltronas = "Numero Poltrona: " + listapoltrona.get(i).getNumeropoltrona() + "\n Nome: "
+                                    + listapoltrona.get(i).getNome() + "\n Tipo: " + listapoltrona.get(i).getTipo()
+                                    + "\n Necessidades Especiais: " + listapoltrona.get(i).getNecessidade_especiais()
+                                    + "\n Sessão: " + listapoltrona.get(i).getSessao();
                         }
-                        JOptionPane.showMessageDialog(null, poltronas, "Poltronas cadastradas", 3);
-                    }        
-            }else if (opcao.equals("5")) {
-                System.out.println("Digite o nome da sessão");
-                String nomes = scan.next();
+                    }
+                    JOptionPane.showMessageDialog(null, poltronas, "Poltronas cadastradas", 3);
+                }
+            } else if (opcao.equals("5")) {
+                String nomes = JOptionPane.showInputDialog(null, "Digite o nome da sessao", "Consultar Poltronas da Sessão", 3);
                 for (int i = 0; i < listapoltrona.size(); i++) {
                     if (nomes.equals(listapoltrona.get(i).getSessao())) {
-                        System.out.println("Número: " + listapoltrona.get(i).getNumeropoltrona());
+                        JOptionPane.showMessageDialog(null, listapoltrona.get(i).getNumeropoltrona(), "Poltronas cadastradas na Sessão", 3);
                     }
                 }
 
-            }else if(opcao.equals("6")){
-                
-                
-                
+            } else if (opcao.equals("6")) {
+                String nome_sessao = JOptionPane.showInputDialog(null, "Digite o nome da sessao", "Consultar Renda da Sessão", 3);
+                for (int i = 0; i < 10; i++) {
+                    if (nome_sessao.equals(listapoltrona.get(i).getSessao())) {
+                        
+                    }
+
+                }
+
+            } else if (opcao.equals("7")) {
+                String poltronas_cadastradas = "";
+
+                for (int i = 0; i < listapoltrona.size(); i++) {
+                    int cadastradas_poltronas = listapoltrona.get(i).getNumeropoltrona();
+                    String cadastradas = Integer.toString(cadastradas_poltronas);
+                    poltronas_cadastradas += "\n Poltrona: " + cadastradas;
+                }
+                JOptionPane.showMessageDialog(null, poltronas_cadastradas, "Poltronas Cadastradas", 3);
             }
+
         }
     }
 }
