@@ -10,7 +10,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,12 +18,11 @@ import javax.swing.JOptionPane;
  */
 public class menu_sessao {
 
-    public static int menu_sessao(ArrayList<sessao> listasessao,
+    public static void menu_sessao(ArrayList<sessao> listasessao,
             ArrayList<poltrona> listapoltrona) throws ParseException {
 
         String opcao;
         boolean loop = true;
-        Scanner scan = new Scanner(System.in);
 
         while (loop) {
             opcao = JOptionPane.showInputDialog(null, "Escolha uma das opcoes: \n "
@@ -38,24 +36,20 @@ public class menu_sessao {
                     + " 8 - Voltar");
             if (opcao.equals("1")) {
                 sessao se = new sessao();
-                System.out.println("Digite o nome da sessão: ");
-                String nome = scan.next();
+                String nome = JOptionPane.showInputDialog(null, "Digite o nome da Sessão", "Cadastro", 3);
                 se.setNomesessao(nome);
-                System.out.println("Digite o nome do filme: ");
-                String nomefilme = scan.next();
+                String nomefilme = JOptionPane.showInputDialog(null, "Digite o nome do Filme", "Cadastro", 3);
                 se.setFilme(nomefilme);
-                System.out.println("Digite a data de inicio da sessão: ");
-                String datainicio = scan.next();
+                String datainicio = JOptionPane.showInputDialog(null, "Digite a data início da sessão", "Cadastro", 3);
                 SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
                 se.setDatainiciosessao(formato.parse(datainicio));
-                System.out.println("Digite o horário: ");
-                String horario = scan.next();
+                String horario = JOptionPane.showInputDialog(null, "Digite o horário", "Cadastro", 3);
                 SimpleDateFormat forma = new SimpleDateFormat("HH:mm");
                 Date teste = forma.parse(horario);
                 Time time = new Time(teste.getTime());
                 se.setHorario(time);
-                System.out.println("Digite o valor: ");
-                double valor = scan.nextDouble();
+                String num = JOptionPane.showInputDialog(null, "Digite o valor", "Cadastro", 3);
+                double valor = Double.parseDouble(num);
                 se.setValor(valor);
                 listasessao.add(se);
 
@@ -65,33 +59,34 @@ public class menu_sessao {
                     for (int i = 0; i < listasessao.size(); i++) {
                         if (listasessao.get(i).getNomesessao().equals(nome)) {
                             sessao a = listasessao.get(i);
-                            System.out.println("Digite o nome da sessão: ");
-                            String nomesessao = scan.next();
+                            String nomesessao = JOptionPane.showInputDialog(null, "Digite o nome da Sessão", "Alterar", 3);
                             a.setNomesessao(nomesessao);
-                            System.out.println("Digite o nome do filme: ");
-                            String nomefilme = scan.next();
+                            String nomefilme = JOptionPane.showInputDialog(null, "Digite o nome do Filme", "Alterar", 3);
                             a.setFilme(nomefilme);
-                            System.out.println("Digite a data de inicio da sessão: ");
-                            String datainicio = scan.next();
+                            String datainicio = JOptionPane.showInputDialog(null, "Digite a data início da sessão", "Alterar", 3);
                             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
                             a.setDatainiciosessao(formato.parse(datainicio));
-                            System.out.println("Digite o horário: ");
-                            String horario = scan.next();
+                            String horario = JOptionPane.showInputDialog(null, "Digite o horário", "Alterar", 3);
                             SimpleDateFormat forma = new SimpleDateFormat("HH:mm");
                             Date teste = forma.parse(horario);
                             Time time = new Time(teste.getTime());
                             a.setHorario(time);
-                            System.out.println("Digite o valor: ");
-                            double valor = scan.nextDouble();
+                            String num = JOptionPane.showInputDialog(null, "Digite o valor", "Alterar", 3);
+                            double valor = Double.parseDouble(num);
                             a.setValor(valor);
-                            
 
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Sessão não encontrada", "Alterar", 3);
+                            System.out.println("teste");
                         }
                     }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Nome inválido!", "Alterar", 3);
+                    System.out.println("teste");
                 }
             } else if (opcao.equals("3")) {
                 String nome = JOptionPane.showInputDialog(null, "Digite o nome da Sessão", "Consultar", 3);
-                
+
                 if (nome != null) {
                     for (int i = 0; i < listasessao.size(); i++) {
                         if (listasessao.get(i).getNomesessao().equals(nome)) {
@@ -103,34 +98,64 @@ public class menu_sessao {
                                     + "Valor: " + listasessao.get(i).getValor());
                         }
                     }
-                    return 0;
 
                 }
 
-            }
-            else if(opcao.equals("4")){
+            } else if (opcao.equals("4")) {
                 String nome = JOptionPane.showInputDialog(null, "Digite o nome da sessão", "Excluir Cadastro de sessão", 3);
                 if (nome != null) {
                     for (int i = 0; i < listasessao.size(); i++) {
-                        if (listasessao.get(i).getNomesessao().equals(nome)){
+                        if (listasessao.get(i).getNomesessao().equals(nome)) {
                             listasessao.remove(i);
-                            JOptionPane.showMessageDialog(null,"O Cadastro da Sessão " + nome + " foi excluido" ,"Excluir Cadastro de Sessão", 3);
-                            break;
+                            JOptionPane.showMessageDialog(null, "O Cadastro da Sessão " + nome + " foi excluido", "Excluir Cadastro de Sessão", 3);
                         }
                     }
                 }
-            }
-            else if(opcao.equals("5")){
+            } else if (opcao.equals("5")) {
                 String sessoes = "\n ";
                 for (int i = 0; i < listasessao.size(); i++) {
-                    sessoes += "\n Sessão "+ i+1+": " +  listasessao.get(i).getNomesessao() + "\n Filme: " + listasessao.get(i).getFilme()
+                    sessoes += "\n Sessão: " + listasessao.get(i).getNomesessao() + "\n Filme: " + listasessao.get(i).getFilme()
                             + "\n Data: " + listasessao.get(i).getDatainiciosessao() + "\n Horário: " + listasessao.get(i).getHorario()
-                            + "\n Valor: " + listasessao.get(i).getValor()+ "\n";
+                            + "\n Valor: " + listasessao.get(i).getValor() + "\n";
                 }
                 JOptionPane.showMessageDialog(null, sessoes, "Sessões cadastradas", 3);
 
+            } else if (opcao.equals("6")) {
+                String hor = JOptionPane.showInputDialog(null, "Digite o horário", "Listar por horário", 3);
+                SimpleDateFormat forma = new SimpleDateFormat("HH:mm");
+                Date teste1 = forma.parse(hor);
+                Time time = new Time(teste1.getTime());
+                String sessoes = "\n ";
+                for (int i = 0; i < listasessao.size(); i++) {
+                    if(time.equals(listasessao.get(i).getHorario())){
+                        sessoes += "\n Sessão: " + listasessao.get(i).getNomesessao() + "\n Filme: " + listasessao.get(i).getFilme()
+                            + "\n Data: " + listasessao.get(i).getDatainiciosessao() + "\n Horário: " + listasessao.get(i).getHorario()
+                            + "\n Valor: " + listasessao.get(i).getValor() + "\n";
+                    }
+                }
+                JOptionPane.showMessageDialog(null, sessoes, "Sessões cadastradas", 3);
+                
+            } else if (opcao.equals("7")){
+                String dia = JOptionPane.showInputDialog(null, "Digite a data", "Listar por dia/mês", 3);
+                SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+                Date date = formato.parse(dia);
+                String sessoes = "\n ";
+                for (int i = 0; i < listasessao.size(); i++) {
+                    if(date.equals(listasessao.get(i).getDatainiciosessao())){
+                        sessoes += "\n Sessão: " + listasessao.get(i).getNomesessao() + "\n Filme: " + listasessao.get(i).getFilme()
+                            + "\n Data: " + listasessao.get(i).getDatainiciosessao() + "\n Horário: " + listasessao.get(i).getHorario()
+                            + "\n Valor: " + listasessao.get(i).getValor() + "\n";
+                    }
+                    
+                }
+                JOptionPane.showMessageDialog(null, sessoes, "Sessões cadastradas", 3);
+                
+            } else if(opcao.equals("8")){
+                loop = false;
+                
             }
+            
         }
-        return 0;
+        
     }
 }

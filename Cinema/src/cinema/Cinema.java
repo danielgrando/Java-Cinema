@@ -17,6 +17,7 @@ public class Cinema {
 
     /**
      * @param args the command line arguments
+     * @throws java.text.ParseException
      */
     public static void main(String[] args) throws ParseException {
 
@@ -36,7 +37,6 @@ public class Cinema {
                 break;
             }
             if(opcao.equals("1")){
-                loop = false;
                 menu_sessao.menu_sessao(listasessao, listapoltrona);
             }
         }
