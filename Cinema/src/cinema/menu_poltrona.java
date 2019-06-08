@@ -73,23 +73,53 @@ public class menu_poltrona {
                                     a.setSessao(sessao);
                                 }
                             }
-                            
 
                         }
                     }
 
-                } 
+                }
 
-            }else if(opcao.equals("5")){
-                    System.out.println("Digite o nome da sessão");
-                    String nomes = scan.next();
+            } else if (opcao.equals("3")) {
+                String numero = JOptionPane.showInputDialog(null, "Digite o numero da Poltrona", "Excluir Cadastro de Poltrona", 3);
+                int numeroConvertido = Integer.parseInt(numero);
+                if (numero != null) {
                     for (int i = 0; i < listapoltrona.size(); i++) {
-                        if(nomes.equals(listapoltrona.get(i).getSessao())){
-                            System.out.println("Número: " + listapoltrona.get(i).getNumeropoltrona());
+                        if (listapoltrona.get(i).getNumeropoltrona() == numeroConvertido) {
+                            listapoltrona.remove(i);
+                            JOptionPane.showMessageDialog(null, "O Cadastro da Poltrona " + numero + " foi excluido", "Excluir Cadastro da Poltrona", 3);
                         }
                     }
                 }
 
+            }else if(opcao.equals("4")){
+                String numero = JOptionPane.showInputDialog(null, "Digite o numero da Poltrona", "Consultar Cadastro de Poltrona", 3);
+                String poltronas = "\n";
+                    int numeroConvertido = Integer.parseInt(numero);
+                    if(numero != null){
+                        for (int i = 0; i < listapoltrona.size(); i++) {
+                            if(listapoltrona.get(i).getNumeropoltrona()== numeroConvertido){
+                                poltronas = "Numero Poltrona: "+ listapoltrona.get(i).getNumeropoltrona()+"\n Nome: " +
+                                        listapoltrona.get(i).getNome()+ "\n Tipo: "+ listapoltrona.get(i).getTipo() +
+                                        "\n Necessidades Especiais: "+ listapoltrona.get(i).getNecessidade_especiais()+
+                                        "\n Sessão: " + listapoltrona.get(i).getSessao();                     
+                            }
+                        }
+                        JOptionPane.showMessageDialog(null, poltronas, "Poltronas cadastradas", 3);
+                    }        
+            }else if (opcao.equals("5")) {
+                System.out.println("Digite o nome da sessão");
+                String nomes = scan.next();
+                for (int i = 0; i < listapoltrona.size(); i++) {
+                    if (nomes.equals(listapoltrona.get(i).getSessao())) {
+                        System.out.println("Número: " + listapoltrona.get(i).getNumeropoltrona());
+                    }
+                }
+
+            }else if(opcao.equals("6")){
+                
+                
+                
+            }
         }
     }
 }

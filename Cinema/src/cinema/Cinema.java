@@ -39,7 +39,8 @@ public class Cinema {
             if(opcao.equals("1")){
                 menu_sessao.menu_sessao(listasessao, listapoltrona);
             }
-            if(opcao.equals("2")){
+          
+                  if(opcao.equals("2")){
                 menu_poltrona.menu_poltrona(listapoltrona, listasessao);
             }
         }
