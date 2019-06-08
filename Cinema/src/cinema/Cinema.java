@@ -5,6 +5,7 @@
  */
 package cinema;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -17,10 +18,11 @@ public class Cinema {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
 
         ArrayList<sessao> listasessao = new ArrayList<>();
         ArrayList<poltrona> listapoltrona = new ArrayList<>();
+        
 
         String opcao;
         boolean loop = true;
@@ -29,6 +31,14 @@ public class Cinema {
                     + "1 - Sessão \n"
                     + "2 - Poltrona \n"
                     + "3 - Sair");
+            if(opcao.equals("3")){
+                System.out.println("Encerrado");
+                break;
+            }
+            if(opcao.equals("1")){
+                loop = false;
+                menu_sessao.menu_sessao(listasessao, listapoltrona);
+            }
         }
 
     }
