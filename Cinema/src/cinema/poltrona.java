@@ -57,6 +57,4 @@ public class poltrona {
         this.sessao = sessao;
     }
     
-    
-    
 }
