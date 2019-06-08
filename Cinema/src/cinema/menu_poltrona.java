@@ -78,9 +78,17 @@ public class menu_poltrona {
                         }
                     }
 
-                }
+                } 
 
-            }
+            }else if(opcao.equals("5")){
+                    System.out.println("Digite o nome da sessão");
+                    String nomes = scan.next();
+                    for (int i = 0; i < listapoltrona.size(); i++) {
+                        if(nomes.equals(listapoltrona.get(i).getSessao())){
+                            System.out.println("Número: " + listapoltrona.get(i).getNumeropoltrona());
+                        }
+                    }
+                }
 
         }
     }
