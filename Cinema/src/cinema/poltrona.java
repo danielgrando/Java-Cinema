@@ -15,7 +15,7 @@ public class poltrona {
     private String nome;
     private String tipo;
     private Boolean necessidade_especiais;
-    private String sessao;
+    private sessao sessao;
 
     public int getNumeropoltrona() {
         return numeropoltrona;
@@ -49,11 +49,11 @@ public class poltrona {
         this.necessidade_especiais = necessidade_especiais;
     }
 
-    public String getSessao() {
+    public sessao getSessao() {
         return sessao;
     }
 
-    public void setSessao(String sessao) {
+    public void setSessao(sessao sessao) {
         this.sessao = sessao;
     }
     
