@@ -201,9 +201,7 @@ public class menu_poltrona {
                             poltronas_cadastradas += "\n Poltrona: " + cadastradas;
                         }
                         JOptionPane.showMessageDialog(null, poltronas_cadastradas, "Poltronas Cadastradas", 3);
-
                     }
-
                 } else if (opcao.equals("8")) {
                     loop = false;
                 }
