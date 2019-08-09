@@ -38,17 +38,16 @@ public class menu_poltrona {
                         + " 8 - Voltar");
 
                 if (opcao.equals("1")) {
-                    poltrona pol = new poltrona();
                     String n = JOptionPane.showInputDialog(null, "Digite o numero da poltrona: ", "Cadastro", 3);
+                    poltrona pol = new poltrona();
                     int numero_convertido = Integer.parseInt(n);
                     pol.setNumeropoltrona(numero_convertido);
                     String nome = JOptionPane.showInputDialog(null, "Digite o nome da pessoa: ", "Cadastro", 3);
                     pol.setNome(nome);
-                    String tipo = JOptionPane.showInputDialog(null, "Digite o tipo da poltrona (Meia ou Inteira): ", "Cadastro", 3);
+                    String tipo = JOptionPane.showInputDialog(null, "Digite o tipo da poltrona (meia ou inteira): ", "Cadastro", 3);
                     pol.setTipo(tipo);
-                    String necessidades = JOptionPane.showInputDialog(null, "Digite se tem necessidades especiais (True ou False): ", "Cadastro", 3);
-                    boolean b = Boolean.getBoolean(necessidades);
-                    pol.setNecessidade_especiais(b);
+                    String necessidades = JOptionPane.showInputDialog(null, "Digite se tem necessidades especiais (sim ou nao): ", "Cadastro", 3);
+                    pol.setNecessidade_especiais(necessidades);
                     String sessao = JOptionPane.showInputDialog(null, "Digite a sessao da poltrona: ", "Cadastro", 3);
                     for (int i = 0; i < listasessao.size(); i++) {
                         if (sessao.equals(listasessao.get(i).getNomesessao())) {
@@ -62,31 +61,25 @@ public class menu_poltrona {
                         JOptionPane.showMessageDialog(null, "Não existe poltrona cadastrada!", "Alerta", 3);
                     } else {
                         String numero = JOptionPane.showInputDialog(null, "Digite o número da poltrona: ", "Alterar Cadastro da Poltrona", 3);
-                        if (numero.equals("")) {
-                            JOptionPane.showMessageDialog(null, "Numero inválido!", "Alterar", 3);
-                        } else {
-                            int numero_convertido = Integer.parseInt(numero);
-                            for (int i = 0; i < listapoltrona.size(); i++) {
-                                if (listapoltrona.get(i).getNumeropoltrona() == numero_convertido) {
-                                    poltrona a = listapoltrona.get(i);
-                                    String nome1 = JOptionPane.showInputDialog(null, "Digite o nome da pessoa: ", "Cadastro", 3);
-                                    a.setNome(nome1);
-                                    String tipo = JOptionPane.showInputDialog(null, "Digite o tipo da poltrona (Meia ou Inteira): ", "Cadastro", 3);
-                                    a.setTipo(tipo);
-                                    String necessidades = JOptionPane.showInputDialog(null, "Digite se tem necessidades especiais (True ou False): ", "Cadastro", 3);
-                                    boolean necessidade = scan.nextBoolean();
-                                    a.setNecessidade_especiais(necessidade);
-                                    String sessao = JOptionPane.showInputDialog(null, "Digite a sessao da poltrona: ", "Cadastro", 3);
-                                    for (int b = 0; b < listasessao.size(); b++) {
-                                        if (sessao.equals(listasessao.get(i).getNomesessao())) {
-                                            a.setSessao(listasessao.get(i));
-                                        }
-
+                        int numero_convertido = Integer.parseInt(numero);
+                        for (int i = 0; i < listapoltrona.size(); i++) {
+                            if (listapoltrona.get(i).getNumeropoltrona() == numero_convertido) {
+                                poltrona a = listapoltrona.get(i);
+                                String nome1 = JOptionPane.showInputDialog(null, "Digite o nome da pessoa: ", "Alterar", 3);
+                                a.setNome(nome1);
+                                String tipo = JOptionPane.showInputDialog(null, "Digite o tipo da poltrona (meia ou inteira): ", "Alterar", 3);
+                                a.setTipo(tipo);
+                                String necessidades = JOptionPane.showInputDialog(null, "Digite se tem necessidades especiais (sim ou nao): ", "Alterar", 3);
+                                a.setNecessidade_especiais(necessidades);
+                                String sessao = JOptionPane.showInputDialog(null, "Digite a sessao da poltrona: ", "Alterar", 3);
+                                for (int b = 0; b < listasessao.size(); b++) {
+                                    if (sessao.equals(listasessao.get(b).getNomesessao())) {
+                                        a.setSessao(listasessao.get(b));   
                                     }
-                                } else {
-                                    JOptionPane.showMessageDialog(null, "Poltrona inválida!", "Alterar", 3);
+
                                 }
-                            }
+                            } 
+
                         }
 
                     }
@@ -127,10 +120,8 @@ public class menu_poltrona {
                                     poltronas = "Numero Poltrona: " + listapoltrona.get(i).getNumeropoltrona() + "\n Nome: "
                                             + listapoltrona.get(i).getNome() + "\n Tipo: " + listapoltrona.get(i).getTipo()
                                             + "\n Necessidades Especiais: " + listapoltrona.get(i).getNecessidade_especiais()
-                                            + "\n Sessão: " + listapoltrona.get(i).getSessao();
+                                            + "\n Sessão: " + listapoltrona.get(i).getSessao().getNomesessao();
                                     JOptionPane.showMessageDialog(null, poltronas, "Consultar", 3);
-                                } else {
-                                    JOptionPane.showMessageDialog(null, "Número inválido!", "Consultar", 3);
                                 }
                             }
 
@@ -143,13 +134,15 @@ public class menu_poltrona {
                         JOptionPane.showMessageDialog(null, "Não existe poltrona cadastrada!", "Alerta", 3);
                     } else {
                         String nomes = JOptionPane.showInputDialog(null, "Digite o nome da sessao: ", "Consultar Poltronas da Sessão", 3);
+                        String total = "";
                         for (int i = 0; i < listapoltrona.size(); i++) {
                             if (nomes.equals(listapoltrona.get(i).getSessao().getNomesessao())) {
-                                JOptionPane.showMessageDialog(null, listapoltrona.get(i).getNumeropoltrona(), "Poltronas cadastradas na Sessão", 3);
+                                total += "\n Poltrona: " + listapoltrona.get(i).getNumeropoltrona();
                             } else {
                                 JOptionPane.showMessageDialog(null, "Nome da sessao inválida!", "Alerta", 3);
                             }
                         }
+                        JOptionPane.showMessageDialog(null, total, "Poltronas cadastradas na Sessão", 3);
 
                     }
 
@@ -177,12 +170,13 @@ public class menu_poltrona {
                                     } else if (listapoltrona.get(i).getTipo().equals("inteira")) {
                                         total += valor;
                                     }
-                                    JOptionPane.showMessageDialog(null, "Total da Sessão: " + total, "Renda da Sessão", 3);
+
                                 } else {
                                     JOptionPane.showMessageDialog(null, "Nome da sessão inválido!", "Renda da Sessão", 3);
                                 }
 
                             }
+                            JOptionPane.showMessageDialog(null, "Total da Sessão: " + total, "Renda da Sessão", 3);
 
                         }
 

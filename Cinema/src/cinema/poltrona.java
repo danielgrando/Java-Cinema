@@ -14,7 +14,7 @@ public class poltrona {
     private int numeropoltrona;
     private String nome;
     private String tipo;
-    private Boolean necessidade_especiais;
+    private String necessidade_especiais;
     private sessao sessao;
 
     public int getNumeropoltrona() {
@@ -41,11 +41,11 @@ public class poltrona {
         this.tipo = tipo;
     }
 
-    public Boolean getNecessidade_especiais() {
+    public String getNecessidade_especiais() {
         return necessidade_especiais;
     }
 
-    public void setNecessidade_especiais(Boolean necessidade_especiais) {
+    public void setNecessidade_especiais(String necessidade_especiais) {
         this.necessidade_especiais = necessidade_especiais;
     }
 
